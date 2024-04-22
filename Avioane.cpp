@@ -29,8 +29,8 @@ std::ostream &operator<<(std::ostream &out, const Avioane &avion) {
         << avion.destinatie << ",Capacitate: " << avion.capacitate << ",Numarul de locuri ocupate: "
         << avion.locuri_ocupate<<",Pretul unui bilet: "<<avion.pret_bilet
         <<",Media de vanzare a biletelor per zbor: "<<avion.medie_bilete
-        << ",Numarul de persoane din echipaj: " << avion.nr_pers_echipaj << "\n" << "Echipajul:" << "\n";
-    for(int i=0;i<avion.nr_pers_echipaj;i++)
+        << ",Numarul de persoane din echipaj: " << avion.echipaj.size() << "\n" << "Echipajul:" << "\n";
+    for(int i=0;i<avion.echipaj.size();i++)
         out << avion.echipaj[i];
     return out;
 }
@@ -91,32 +91,30 @@ int Avioane::getMedieBilete() const {
     return medie_bilete;
 }
 
-void Avioane::DetaliiGeneraleEchipaj() {
-    std::cout << "testing\n";
-    std::cout << echipaj.size() << '\n';
-    for(Angajati angajat : echipaj){
-        angajat.DetaliiRol();
-        if(dynamic_cast<Pilot*>(&angajat)){
-            std::cout << "E pilot\n";
-            Pilot* pilot = dynamic_cast<Pilot*>(&angajat);
-            pilot->DetaliiRol();
-        }
-        if(dynamic_cast<Stewardesa*>(&angajat)){
-            std::cout << "E steward\n";
-            Stewardesa* steward = dynamic_cast<Stewardesa*>(&angajat);
-            steward->DetaliiRol();
-        }
-    }
-}
-
-void Avioane::AdaugaPilot(Pilot pilot) {
-    pilot.DetaliiRol();
-    Angajati angajat = pilot;
+//void Avioane::DetaliiGeneraleEchipaj() {
+//    std::cout << "testing\n";
+//    std::cout << echipaj.size() << '\n';
+//    for(Angajati angajat : echipaj){
+//        angajat.DetaliiRol();
+//        if(dynamic_cast<Pilot*>(&angajat)){
+//            std::cout << "E pilot\n";
+//            Pilot* pilot = dynamic_cast<Pilot*>(&angajat);
+//            pilot->DetaliiRol();
+//        }
+//        if(dynamic_cast<Stewardesa*>(&angajat)){
+//            std::cout << "E steward\n";
+//            Stewardesa* steward = dynamic_cast<Stewardesa*>(&angajat);
+//            steward->DetaliiRol();
+//        }
+//    }
+//}
+//
+void Avioane::AdaugaPilot(const Pilot &pilot) {
+    Angajati angajat = static_cast<const Pilot&>(pilot);
     this->echipaj.push_back(angajat);
 }
 
-void Avioane::AdaugaSteward(Stewardesa steward) {
-    steward.DetaliiRol();
-    Angajati angajat = steward;
+void Avioane::AdaugaSteward(const Stewardesa& stewardesa) {
+    Angajati angajat = static_cast<const Stewardesa&>(stewardesa);
     this->echipaj.push_back(angajat);
 }

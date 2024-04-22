@@ -1,21 +1,18 @@
 #include "Angajati.h"
 
 
-Angajati::Angajati(const std::string &n, const std::string &pre, int sal, const std::string &func)
+Angajati::Angajati(const std::string &n, const std::string &pre, int sal)
 {this->nume = n;
-    this->functie= func;
     this->prenume=pre;
     this->salariu=sal;}
 Angajati::~Angajati() {
     nume.clear();
-    functie.clear();
     salariu=0;
     prenume.clear();
 }
 
 Angajati::Angajati(const Angajati &aux){
     this->nume=aux.nume;
-    this->functie=aux.functie;
     this->salariu=aux.salariu;
     this->prenume=aux.prenume;
 
@@ -24,8 +21,7 @@ Angajati::Angajati(const Angajati &aux){
 bool Angajati::operator==(const Angajati &angajat) const {
     return nume == angajat.nume &&
            prenume == angajat.prenume &&
-           salariu == angajat.salariu &&
-           functie == angajat.functie;
+           salariu == angajat.salariu;
 }
 
 bool Angajati:: operator!=(const Angajati &angajat) const {
@@ -34,7 +30,7 @@ bool Angajati:: operator!=(const Angajati &angajat) const {
 
 std::ostream &operator<<(std::ostream &out, const Angajati &angajat) {
     out<< "Nume: " << angajat.nume << ",Prenume: " << angajat.prenume << ",Salariu lunar: " << angajat.salariu
-       << ",Functie: " << angajat.functie<<"\n";
+       << ",Functie: " <<"\n";
     return out;
 }
 
@@ -45,8 +41,6 @@ std::istream &operator>>(std::istream &ci, Angajati &angajat){
     ci >> angajat.prenume;
     std::cout<<"Introduceti salariul lunar angajatului:";
     ci >>angajat.salariu;
-    std::cout<<"Introduceti functia angajatului:";
-    ci >>angajat.functie;
     return ci;
 }
 
@@ -54,7 +48,12 @@ int Angajati::getSalariu() const {
     return salariu;
 }
 
-void Angajati::DetaliiRol() {
-    std::cout << "Angajatul: " <<this->nume << ' ' << this->prenume << '\n';
-    std::cout << "Are functia " << this->functie << '\n';
+const std::string &Angajati::getNume() const {
+    return nume;
 }
+
+const std::string &Angajati::getPrenume() const {
+    return prenume;
+}
+
+

@@ -23,9 +23,8 @@ class Avioane {
     public:
         explicit Avioane(const std::string &mod="", const std::string &dest="", int cap=0,int locuriOcupate=0,int pret=0,int med=0,int nr=0,const std::vector<Angajati> &ech= std:: vector<Angajati>());
         ~Avioane();
-        void DetaliiGeneraleEchipaj();
-        void AdaugaPilot(Pilot);
-        void AdaugaSteward(Stewardesa);
+        void AdaugaPilot(const Pilot& Pilot);
+        void AdaugaSteward( const Stewardesa& stewardesa);
         friend std::ostream &operator<<(std::ostream &out, const Avioane &avion);
         friend std::istream &operator>>(std::istream &ci,Avioane &avion);
         bool operator==(const Avioane &av) const;

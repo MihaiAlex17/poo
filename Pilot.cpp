@@ -1,66 +1,34 @@
-//
-// Created by Alex on 21.04.2024.
-//
-
 #include "Pilot.h"
 
+Pilot::Pilot(const std::string &n, const std::string &pre, int sal, int vechime,int id,const std::string &func ): Angajati(n,pre,sal),id(id),vechime(vechime),functie(func)
+{
+}
+Pilot::~Pilot(){}
 
 
-Pilot::Pilot(const std::string &n, const std::string &pre, int sal, int vechime)
-{this->nume = n;
-    this->functie= "Pilot";
-    this->prenume=pre;
-    this->vechime = vechime;
-    this->salariu=sal;}
-Pilot::~Pilot() {
-    nume.clear();
-    functie.clear();
-    salariu=0;
-    prenume.clear();
+std::ostream& operator<<(std::ostream& ou, const Pilot& pilot) {
+    ou << "Nume: " << pilot.getNume() << std::endl;
+    ou << "Prenume: " << pilot.getPrenume() << std::endl;
+    ou << "Salariu: " << pilot.getSalariu() << std::endl;
+    ou << "Vechime: " << pilot.vechime << " ani"<<std::endl;
+    ou << "ID: " << pilot.id<< std::endl;
+    ou << "Functie: " << pilot.functie << std::endl;
+    return ou;
+}
+std::istream& operator>>(std::istream& input, Pilot& pilot){
+
+    input >> dynamic_cast<Angajati&>(pilot);
+    std::cout<<"Introduceti CNP-ul pilotului: ";
+    input >> pilot.id;
+    std::cout<<"Introduceti vechimea pilotului: ";
+    input>> pilot.vechime;
+    return input;
 }
 
-Pilot::Pilot(const Pilot &aux){
-    this->nume=aux.nume;
-    this->functie=aux.functie;
-    this->salariu=aux.salariu;
-    this->prenume=aux.prenume;
-
+int Pilot::getId() const {
+    return id;
 }
 
-bool Pilot::operator==(const Pilot &angajat) const {
-    return nume == angajat.nume &&
-           prenume == angajat.prenume &&
-           salariu == angajat.salariu &&
-           functie == angajat.functie;
-}
-
-bool Pilot:: operator!=(const Pilot &angajat) const {
-    return !(angajat == *this);
-}
-
-std::ostream &operator<<(std::ostream &out, const Pilot &angajat) {
-    out<< "Nume: " << angajat.nume << ",Prenume: " << angajat.prenume << ",Salariu lunar: " << angajat.salariu
-       << ",Functie: " << angajat.functie<<"\n";
-    return out;
-}
-
-std::istream &operator>>(std::istream &ci, Pilot &angajat){
-    std::cout<<"Introduceti numele angajatului:";
-    ci >> angajat.nume ;
-    std::cout<<"Introduceti prenumele angajatului:";
-    ci >> angajat.prenume;
-    std::cout<<"Introduceti salariul lunar angajatului:";
-    ci >>angajat.salariu;
-    std::cout<<"Introduceti functia angajatului:";
-    ci >>angajat.functie;
-    return ci;
-}
-
-int Pilot::getSalariu() const {
-    return salariu;
-}
-
-void Pilot::DetaliiRol() {
-    std::cout << "Pilotul: " << this->nume << ' ' << this->prenume << '\n';
-    std::cout << "Are vechimea " << this->vechime << '\n';
+int Pilot::getVechime() const {
+    return vechime;
 }

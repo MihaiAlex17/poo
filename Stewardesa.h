@@ -10,22 +10,14 @@
 
 class Stewardesa : public Angajati {
 private:
-    std::string nume;
-    std::string prenume;
-    int salariu;
     std::string functie;
     std::string limbaVorbita;
-
 public:
-    explicit Stewardesa( std::string limba ="", const std::string &n="", const std::string &pre="", int sal=0  );
+    explicit Stewardesa( const std::string &n="", const std::string &pre="", int sal=0  ,const std::string &functie="Stewardesa",const std::string &limba ="");
     virtual ~Stewardesa();
-    virtual void DetaliiRol() override;
-    Stewardesa(const Stewardesa &aux);
-    bool operator==(const Stewardesa &angajat) const;
-    bool operator!=(const Stewardesa &angajat) const;
     friend std::ostream &operator<<(std::ostream &out, const Stewardesa &angajat);
     friend std::istream &operator>>(std::istream &ci, Stewardesa &angajat);
-    int getSalariu() const;
+
 };
 
 

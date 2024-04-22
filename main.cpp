@@ -4,6 +4,8 @@
 #include "Angajati.h"
 #include "Aeroport.h"
 #include "Avioane.h"
+#include "Pilot.h"
+#include "Stewardesa.h"
 
     void meniu(){
         std::cout<<"1.Vezi informatiile aeroportului"<<"\n";
@@ -13,15 +15,12 @@
         std::cout<<"5.Iesi din meniu"<<"\n"<<"\n";
         std::cout<<"Alege:"<<"\n";
     }
-int main() {
-    Avioane test;
-    test.DetaliiGeneraleEchipaj();
-    Pilot pilot("ana","george",100,29);
-    test.AdaugaPilot(pilot);
-    Stewardesa stew("Engleza","gigi","anton",100);
-    test.AdaugaSteward(stew);
-
-    Aeroport a;
+int main() {Aeroport a;
+    Avioane b;
+    Stewardesa s;
+    b.AdaugaSteward(s);
+    std::cout<<b;
+    std::cout<<b.getEchipaj().size();
     std::cin>>a;
     int alg;
     bool m= true;
