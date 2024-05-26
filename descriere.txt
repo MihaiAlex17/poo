@@ -1,0 +1,3 @@
+pentru tema 3 am facut un template
+pentru zbor in care am zbor de marfa si zbor de pasageri,in care am folosit un map
+am facut o clasa nou meniu folosind singleton

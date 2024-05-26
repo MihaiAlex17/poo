@@ -1,11 +1,14 @@
 #include "Aeroport.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++11-extensions"
 Aeroport::Aeroport(const std::string &n, const std::string &t, const std::string &o,int nr,const std::vector<Avioane>& av)
 {this->nume=n;
     this->tara=t;
     this->oras=o;
     this->nrAvioane=nr;
-    this->avioane=av;}
+    this->avioane=av;
+    }
 
 Aeroport::Aeroport(const Aeroport& other){
     this->nume = other.nume;
@@ -20,6 +23,7 @@ Aeroport::~Aeroport()
     oras.clear();
     nrAvioane=0;
     avioane.clear();
+
 }
 
 
@@ -30,7 +34,7 @@ std::ostream &operator<<(std::ostream &out, const Aeroport &aeroport) {
         out <<"Avionul "<<i+1<<": "<<"\n"<<aeroport.avioane[i];
     return out;
 }
- std::istream &operator>>(std::istream &ci,Aeroport &aer) {
+std::istream &operator>>(std::istream &ci,Aeroport &aer) {
     std::cout<<"Introduceti numarul de avioane aflate pe aeroport:";
     ci>> aer.nrAvioane;
     aer.avioane.clear();
@@ -40,7 +44,9 @@ std::ostream &operator<<(std::ostream &out, const Aeroport &aeroport) {
         ci >> av;
         aer.avioane.push_back(av);
     }
+
     return ci;
+
 }
 
 bool Aeroport::operator==(const Aeroport &aer) const {
@@ -104,3 +110,4 @@ void Aeroport::ProfitAeroport(){
 bool operator>(const Aeroport& a1, const Aeroport& a2) {
     return a1.nrAvioane > a2.nrAvioane;
 }
+#pragma clang diagnostic pop

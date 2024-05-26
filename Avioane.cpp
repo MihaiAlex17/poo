@@ -1,7 +1,8 @@
 #include "Avioane.h"
 #include "Pilot.h"
 #include "Stewardesa.h"
-
+#include <iostream>
+#include <typeinfo>
 Avioane::Avioane(const std::string &mod, const std::string &dest, int cap,
         int locuriOcupate,int pret,int med,int nr,const std::vector<Angajati> &ech) {
     this->model=mod;
@@ -31,7 +32,10 @@ std::ostream &operator<<(std::ostream &out, const Avioane &avion) {
         <<",Media de vanzare a biletelor per zbor: "<<avion.medie_bilete
         << ",Numarul de persoane din echipaj: " << avion.echipaj.size() << "\n" << "Echipajul:" << "\n";
     for(int i=0;i<avion.echipaj.size();i++)
-        out << avion.echipaj[i];
+        if(typeid(Pilot)==typeid(avion.echipaj[i]))
+            out<<dynamic_cast<const Pilot&>(avion.echipaj[i]);
+        else
+            out<<dynamic_cast<const Stewardesa&>(avion.echipaj[i]);
     return out;
 }
 
@@ -48,15 +52,13 @@ std::istream &operator>>(std::istream &ci,Avioane &avion) {
     ci>>avion.pret_bilet;
     std::cout<<"Introduceti media de vanzare a biletelor per zbor:";
     ci>>avion.medie_bilete;
-    std::cout<<"Introduceti numarul de persoane din echipaj:";
-    ci >> avion.nr_pers_echipaj;
-    avion.echipaj.clear();
-    for (int i = 0; i < avion.nr_pers_echipaj; i++) {
-        Angajati angajat;
-        std::cout<<"Introduceti persoana "<<i+1<<" din echipaj :"<<"\n";
-        ci >> angajat;
-        avion.echipaj.push_back(angajat);
-    }
+    Pilot p;
+    std::cin>>p;
+    avion.AdaugaPilot(p);
+    Stewardesa s;
+    std::cin>>s;
+    avion.AdaugaSteward(s);
+
     return ci;
 }
 
@@ -110,11 +112,11 @@ int Avioane::getMedieBilete() const {
 //}
 //
 void Avioane::AdaugaPilot(const Pilot &pilot) {
-    Angajati angajat = static_cast<const Pilot&>(pilot);
+    Angajati angajat = dynamic_cast<const Pilot&>(pilot);
     this->echipaj.push_back(angajat);
 }
 
 void Avioane::AdaugaSteward(const Stewardesa& stewardesa) {
-    Angajati angajat = static_cast<const Stewardesa&>(stewardesa);
+    Angajati angajat = dynamic_cast<const Stewardesa&>(stewardesa);
     this->echipaj.push_back(angajat);
 }

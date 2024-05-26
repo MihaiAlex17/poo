@@ -13,4 +13,8 @@ add_executable(poo main.cpp
         Pilot.cpp
         Pilot.h
         Stewardesa.cpp
-        Stewardesa.h)
+        Stewardesa.h
+        Zbor.h
+        Meniu.cpp
+        Meniu.h
+)

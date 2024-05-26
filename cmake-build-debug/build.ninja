@@ -85,6 +85,12 @@ build CMakeFiles/poo.dir/Stewardesa.cpp.obj: CXX_COMPILER__poo_unscanned_Debug D
   OBJECT_DIR = CMakeFiles\poo.dir
   OBJECT_FILE_DIR = CMakeFiles\poo.dir
 
+build CMakeFiles/poo.dir/Meniu.cpp.obj: CXX_COMPILER__poo_unscanned_Debug D$:/poo/Meniu.cpp || cmake_object_order_depends_target_poo
+  DEP_FILE = CMakeFiles\poo.dir\Meniu.cpp.obj.d
+  FLAGS = -g -std=gnu++98 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\poo.dir
+  OBJECT_FILE_DIR = CMakeFiles\poo.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target poo
@@ -93,7 +99,7 @@ build CMakeFiles/poo.dir/Stewardesa.cpp.obj: CXX_COMPILER__poo_unscanned_Debug D
 #############################################
 # Link the executable poo.exe
 
-build poo.exe: CXX_EXECUTABLE_LINKER__poo_Debug CMakeFiles/poo.dir/main.cpp.obj CMakeFiles/poo.dir/Angajati.cpp.obj CMakeFiles/poo.dir/Aeroport.cpp.obj CMakeFiles/poo.dir/Avioane.cpp.obj CMakeFiles/poo.dir/Pilot.cpp.obj CMakeFiles/poo.dir/Stewardesa.cpp.obj
+build poo.exe: CXX_EXECUTABLE_LINKER__poo_Debug CMakeFiles/poo.dir/main.cpp.obj CMakeFiles/poo.dir/Angajati.cpp.obj CMakeFiles/poo.dir/Aeroport.cpp.obj CMakeFiles/poo.dir/Avioane.cpp.obj CMakeFiles/poo.dir/Pilot.cpp.obj CMakeFiles/poo.dir/Stewardesa.cpp.obj CMakeFiles/poo.dir/Meniu.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\poo.dir

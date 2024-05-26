@@ -4,6 +4,8 @@
 #include <string>
 #include "Angajati.h"
 #include "Avioane.h"
+#include "Zbor.h"
+#include <list>
 class Aeroport {
 private:
     std::string nume;
@@ -11,8 +13,11 @@ private:
     std::string oras;
     int nrAvioane;
     std::vector<Avioane> avioane;
+
 public:
-    explicit Aeroport(const std::string &n="Henri Coanda", const std::string &t="Romania", const std::string &o="Bucuresti",int nr=0,const std::vector<Avioane>& av=std::vector<Avioane>());
+    explicit Aeroport(const std::string &n = "Henri Coanda", const std::string &t = "Romania",
+                      const std::string &o = "Bucuresti", int nr = 0, const std::vector<Avioane> &av = std::vector<Avioane>());
+
     ~Aeroport();
     Aeroport(const Aeroport& other);
     friend std::ostream &operator<<(std::ostream &out, const Aeroport &aeroport);

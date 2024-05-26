@@ -13,7 +13,6 @@ public:
     explicit Angajati(const std::string &n="", const std::string &pre="", int sal=0);
     virtual ~Angajati();
     Angajati(const Angajati &aux);
-//    virtual void DetaliiRol();
     bool operator==(const Angajati &angajat) const;
     bool operator!=(const Angajati &angajat) const;
     friend std::ostream &operator<<(std::ostream &out, const Angajati &angajat);
@@ -23,8 +22,6 @@ public:
     const std::string &getNume() const;
 
     const std::string &getPrenume() const;
-
-    const std::string &getFunctie() const;
 
 };
 
